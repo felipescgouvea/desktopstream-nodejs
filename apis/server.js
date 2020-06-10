@@ -1,5 +1,5 @@
 const http = require('http');
-const controller = require('./controller.js');
+const controller = require('../controllers/stream-controller.js');
 let server;
 const PORT = 3000;
 
