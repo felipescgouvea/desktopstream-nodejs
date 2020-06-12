@@ -1,7 +1,13 @@
+/*
+
+    database setup for random entity
+
+*/
+
 const express = require("express");
 
 const Router = express.Router();
-const databasePool = require("../connection");
+const databasePool = require("../database/connection");
 
 Router.get("/", (req, res) => {
     console.log("route people");
