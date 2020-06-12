@@ -4,66 +4,30 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <title>Hello, world!</title>
+    <title>Streamshot</title>
   </head>
   <body>
+    
+    <div class="container">
+      <div class="main-title">
+        <h1>Welcome to your stream!</h1>
+      </div>
+      
+      <div>
+        <button onclick="startStream()">Start</button>
+        <button onclick="stopStream()">Stop</button>
+      </div>
+      <img id="image" class="main-image"></img>
 
-    <img id="image"></image>
+      
+    </div>
 
-    <!-- Optional JavaScript -->
-    <script type="text/javascript">
-        sourceUrl = 'http://localhost:3000';
-        var socket = io(sourceUrl)
-        socket.on('image', data =>{
-            //console.log(data)
-            var arrayBuffer = data;
-            var bytes = new Uint8Array(arrayBuffer);
-            //console.log(bytes)
-            var image = document.getElementById('image');
-
-            image.src = 'data:image/png;base64,'+ encode(bytes);
-        })
-
-                // public method for encoding an Uint8Array to base64
-        function encode (input) {
-            var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-            var output = "";
-            var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-            var i = 0;
-        
-            while (i < input.length) {
-                chr1 = input[i++];
-                chr2 = i < input.length ? input[i++] : Number.NaN; // Not sure if the index 
-                chr3 = i < input.length ? input[i++] : Number.NaN; // checks are needed here
-            
-                enc1 = chr1 >> 2;
-                enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-                enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-                enc4 = chr3 & 63;
-            
-                if (isNaN(chr2)) {
-                    enc3 = enc4 = 64;
-                } else if (isNaN(chr3)) {
-                    enc4 = 64;
-                }
-                output += keyStr.charAt(enc1) + keyStr.charAt(enc2) +
-                          keyStr.charAt(enc3) + keyStr.charAt(enc4);
-            }
-            return output;
-        }
-
-    </script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+      <script src="./index-controller.js"></script>
+      
 </html>
 
 
