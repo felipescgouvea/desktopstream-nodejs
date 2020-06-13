@@ -1,7 +1,7 @@
 const http = require('http');
 const controller = require('../controllers/stream-controller.js');
 let server;
-const PORT = 3000;
+const PORT = 8080;
 
 
 
@@ -23,5 +23,5 @@ exports.createServer = (app) => {
         return this;
 }
 
-exports.startStream = () => controller.startScreenshotLoop(250);
+exports.startStream = () => controller.startScreenshotLoop(1000);
 

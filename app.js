@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const databaseConnection = require('./connection');
+const databaseConnection = require('./database/connection');
 const peopleRoutes = require("./routes/people");
 
 
@@ -24,7 +24,7 @@ app.use('/', (req,res) => {
     res.render('index.html');
     res.end();
 })
-console.log(appServer);
+
 appServer.startStream();
 
 appServer.listen();
