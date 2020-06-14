@@ -23,5 +23,5 @@ exports.createServer = (app) => {
         return this;
 }
 
-exports.startStream = () => controller.startScreenshotLoop(1000);
+exports.startStream = () => controller.startScreenshotLoop();
 

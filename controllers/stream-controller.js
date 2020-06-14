@@ -4,7 +4,9 @@ const sharp = require('sharp');
 var emptyIO = require('socket.io');
 let io = null;
 
-
+const timeDelay = 1000;
+const frameQuantity = 10;
+const FPS = timeDelay/frameQuantity;
 
 exports.init = (server) => {
     //console.log(server);
@@ -19,9 +21,7 @@ exports.init = (server) => {
     })
 }
 
-exports.startScreenshotLoop = (timeDelay) => {
-
-
+exports.startScreenshotLoop = () => {
 
     setInterval(() =>{
         //var t0 = performance.now();
@@ -38,5 +38,5 @@ exports.startScreenshotLoop = (timeDelay) => {
             console('could not take ss :', err);
           })
 
-    }, timeDelay)
+    }, FPS)
 }
