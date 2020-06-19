@@ -1,20 +1,32 @@
-let image = document.getElementById('image');
 
-sourceUrl = 'https://19b4bff274af.ngrok.io';
+
+sourceUrl = 'http://localhost:8080';
 let socket = io(sourceUrl);
 
 const startStream = () =>{
     if(!socket.connected){
         socket.connect();
     }
-    socket.on('image', data =>{
-        //console.log(data)
-        let arrayBuffer = data;
-        let bytes = new Uint8Array(arrayBuffer);
-        image.src = 'data:image/jpg;base64,'+ (data);
-    
-    })
-    image.style.visibility = 'visible';
+    socket.on('image', function(data) {
+        try {
+            //console.log(data);
+            console.log('Frame Arrived');
+            var canvas = document.getElementById('videoCanvas');
+            var context = canvas.getContext('2d');
+            var imageObject = new Image();
+            imageObject.src = 'data:image/jpeg;base64,' + data;
+            imageObject.onload = function(){
+            context.height = imageObject.height;
+            context.width = imageObject.width;
+            console.log(imageObject.width);
+            console.log(imageObject.height);
+            context.drawImage(imageObject,0,0,context.width,context.height);
+        }
+        
+        } catch(e){
+            console.log(e); 
+        }
+    });
 }
 
 const stopStream = () => {
