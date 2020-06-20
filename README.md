@@ -5,6 +5,9 @@ Hi! The purpose of this repository is to serve a new easy-adaptable-way of strea
 - npm install
 - node app.js
 
+## Since you executed above commands you begin to read udp stream to the 127.0.0.1 ip and port 3000
+
+
 
 ## To make server visible from internet you must create an account on https://ngrok.com/
 You can also **download**  it from https://dashboard.ngrok.com/get-started/setup

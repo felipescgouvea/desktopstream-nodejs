@@ -25,6 +25,6 @@ app.use('/', (req,res) => {
     res.end();
 })
 
-
+appServer.startStream();
 
 appServer.listen();

@@ -1,23 +1,18 @@
-
-const screenshot = require('screenshot-desktop');
-const udpServer = require('../apis/udp-server');
-const sharp = require('sharp');
+const reader = require('./udp-stream-reader');
 var emptyIO = require('socket.io');
-var ss = require('socket.io-stream');
-var stream = ss.createStream();
 let io = null;
 let counter = 0;
 
-exports.init = (server) => {
-    //console.log(server);
+exports.startStream = (server) => {
     io = emptyIO(server);
-
     io.on('connection', socket => {
         console.log("Socket connection: ", socket.id);
-        udpServer.streamer(io);
-    })
+        reader.startStream(io);
+    });
 }
-
+// @deprecated
+//const screenshot = require('screenshot-desktop');
+//const sharp = require('sharp');
 exports.startScreenshotLoop = () => {
     setInterval(() =>{
         //var t0 = performance.now();
